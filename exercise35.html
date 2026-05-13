@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Person Object Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    h2 {
+      color: #333;
+    }
+    .box {
+      background: white;
+      border-left: 5px solid #4a90e2;
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .box h3 {
+      margin-top: 0;
+      color: #4a90e2;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      padding: 4px 0;
+      border-bottom: 1px solid #eee;
+    }
+    ul li span {
+      font-weight: bold;
+      color: #555;
+    }
+    .deleted {
+      color: #e74c3c;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>JavaScript Object Demo — Person</h2>
+
+  <div class="box">
+    <h3>📋 All Properties (before deletion)</h3>
+    <ul id="before-list"></ul>
+  </div>
+
+  <div class="box">
+    <h3>🗑️ After Deleting <code>age</code></h3>
+    <ul id="after-list"></ul>
+    <p class="deleted">❌ Property "age" has been deleted.</p>
+  </div>
+
+  <script>
+    var Person = {
+      firstName : "Tony",
+      lastName  : "Lee",
+      age       : 50,
+      eyeColor  : "Blue"
+    };
+
+    // List all properties before deletion
+    var beforeList = document.getElementById("before-list");
+    for (var key in Person) {
+      if (Person.hasOwnProperty(key)) {
+        var li = document.createElement("li");
+        li.innerHTML = "<span>" + key + "</span> : " + Person[key];
+        beforeList.appendChild(li);
+      }
+    }
+
+    // Delete the age property
+    delete Person.age;
+
+    // List all properties after deletion
+    var afterList = document.getElementById("after-list");
+    for (var key in Person) {
+      if (Person.hasOwnProperty(key)) {
+        var li = document.createElement("li");
+        li.innerHTML = "<span>" + key + "</span> : " + Person[key];
+        afterList.appendChild(li);
+      }
+    }
+  </script>
+
+</body>
+</html>
