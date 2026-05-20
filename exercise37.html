@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circle Properties Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 60px auto;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #c0392b;
+            font-family: monospace;
+            font-size: 1.2em;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #555;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 12px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .result {
+            margin-top: 14px;
+            font-size: 1.1em;
+            color: #27ae60;
+            font-weight: bold;
+            min-height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Circle Properties Calculator</h1>
+
+    <!-- Circumference -->
+    <div class="card">
+        <h2>calcCircumfrence</h2>
+        <label for="radiusCirc">Radius:</label>
+        <input type="number" id="radiusCirc" placeholder="Enter radius" min="0" step="any">
+        <button onclick="calcCircumfrence()">Calculate Circumference</button>
+        <div class="result" id="resultCirc"></div>
+    </div>
+
+    <!-- Area -->
+    <div class="card">
+        <h2>calcArea</h2>
+        <label for="radiusArea">Radius:</label>
+        <input type="number" id="radiusArea" placeholder="Enter radius" min="0" step="any">
+        <button onclick="calcArea()">Calculate Area</button>
+        <div class="result" id="resultArea"></div>
+    </div>
+
+    <script>
+        function calcCircumfrence(radius) {
+            if (radius === undefined) {
+                radius = parseFloat(document.getElementById("radiusCirc").value);
+            }
+            if (isNaN(radius) || radius < 0) {
+                document.getElementById("resultCirc").textContent = "Please enter a valid radius.";
+                return;
+            }
+            const circumference = (2 * Math.PI * radius).toFixed(2);
+            document.getElementById("resultCirc").textContent = "The circumference is " + circumference;
+        }
+
+        function calcArea(radius) {
+            if (radius === undefined) {
+                radius = parseFloat(document.getElementById("radiusArea").value);
+            }
+            if (isNaN(radius) || radius < 0) {
+                document.getElementById("resultArea").textContent = "Please enter a valid radius.";
+                return;
+            }
+            const area = (Math.PI * radius * radius).toFixed(2);
+            document.getElementById("resultArea").textContent = "The area is " + area;
+        }
+    </script>
+</body>
+</html>
